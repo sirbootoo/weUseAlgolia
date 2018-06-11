@@ -1,0 +1,116 @@
+.container-1{
+    width: 700px;
+    vertical-align: middle;
+    white-space: nowrap;
+    position: relative;
+}
+
+.container-1 input#search{
+    width: 620px;
+    height: 50px;
+    background: #5468FF;
+    border: none;
+    font-size: 10pt;
+    float: left;
+    color: #fff !important;
+    padding: 1em;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 25px;   
+    -webkit-transition: background .55s ease;
+    -moz-transition: background .55s ease;
+    -ms-transition: background .55s ease;
+    -o-transition: background .55s ease;
+    transition: background .55s ease;
+}
+
+.container-1 input#search:focus {
+    background: #fff;
+    color: #5468FF !important;
+    outline: none;
+}
+
+.container-1 input#search::-webkit-input-placeholder, ::ng-deep .ais-SearchBox-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #fff;
+}
+.container-1 input#search::-moz-placeholder, ::ng-deep .ais-SearchBox-input::-moz-placeholder { /* Firefox 19+ */
+    color: #fff;
+}
+.container-1 input#search:-ms-input-placeholder, ::ng-deep .ais-SearchBox-input:-ms-input-placeholder { /* IE 10+ */
+    color: #fff;
+}
+.container-1 input#search:-moz-placeholder, ::ng-deep .ais-SearchBox-input:-moz-placeholder { /* Firefox 18- */
+    color: #fff;
+}
+
+.container-1 .icon{
+    position: absolute;
+    top: 50%;
+    margin-left: 17px;
+    margin-top: 17px;
+    z-index: 1;
+    color: #4f5b66;
+}
+
+h1.jumbotron-heading{
+    color: white;
+}
+
+p.lead.text-muted{
+    color: rgba(255,255,255, .7) !important;
+}
+
+section.jumbotron{
+    background-image: linear-gradient(#5468FF, #fff);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 2% 49%;
+    border-radius: 0px !important;
+}
+
+@media (max-width: 411px) {
+    .container-1, .container-1 input#search, ::ng-deep .ais-SearchBox-input {
+      width: 100% !important;
+    }
+}
+
+::ng-deep .ais-SearchBox-input {
+    width: 620px;
+    height: 50px;
+    background: #5468FF;
+    border: none;
+    outline: none;
+    font-size: 10pt;
+    color: #fff !important;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 25px;   
+    -webkit-transition: background .55s ease;
+    -moz-transition: background .55s ease;
+    -ms-transition: background .55s ease;
+    -o-transition: background .55s ease;
+    transition: background .55s ease;
+}
+
+::ng-deep .ais-SearchBox-input:focus {
+    outline: none;
+}
+
+::ng-deep .ais-SearchBox-submitIcon, .ais-SearchBox-submit {
+    position: absolute;
+    top: 12px;
+    left: 51px;
+    width: 18px;
+    height: 18px;
+    display: none;
+}
+
+::ng-deep .ais-SearchBox-resetIcon {}
+
+::ng-deep .ais-SearchBox-loadingIcon {}
