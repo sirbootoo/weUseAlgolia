@@ -1,0 +1,83 @@
+<div class="container-fluid stylish-form">
+  <div class="row mar20">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+
+      <!-- Login -->
+      <div class="inner-section" *ngIf="isLogin">
+        <form method="POST">
+          <div class="mar20 inside-form">
+            <h2 class="font_white text-center">LOGIN / <span (click)="isLogin = !isLogin">SIGNUP</span></h2>
+            <ul>
+              <li class="icon-holder dsp-flex">
+                <i class="fab fa-facebook "></i>
+              </li>
+              <li class="icon-holder dsp-flex">
+                <i class="fab fa-twitter "></i>
+              </li>
+              <li class="icon-holder dsp-flex">
+                <i class="fab fa-instagram "></i>
+              </li>
+            </ul>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fas fa-envelope "></i>
+              </span>
+              <input type="email" class="form-control" name="text" placeholder="Email...">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fas fa-lock "></i>
+              </span>
+              <input type="password" class="form-control" name="text" placeholder="Password...">
+            </div>
+            <div class="footer text-center">
+              <a href="http://vijender.in/" class="btn btn-neutral btn-round btn-lg">Get Started</a>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- SignUp -->
+      <div class="inner-section" *ngIf="!isLogin">
+        <form method="POST">
+          <div class="mar20 inside-form">
+            <h2 class="font_white text-center">SIGN UP / <span (click)="isLogin = !isLogin">LOGIN</span></h2>
+            <ul>
+              <li class="icon-holder dsp-flex">
+                <i class="fab fa-facebook "></i>
+              </li>
+              <li class="icon-holder dsp-flex">
+                <i class="fab fa-twitter "></i>
+              </li>
+              <li class="icon-holder dsp-flex">
+                <i class="fab fa-instagram "></i>
+              </li>
+            </ul>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fas fa-pencil-alt "></i>
+              </span>
+              <input type="text" class="form-control" name="text" placeholder="First Name...">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fas fa-envelope "></i>
+              </span>
+              <input type="email" class="form-control" name="text" placeholder="Email...">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fas fa-lock "></i>
+              </span>
+              <input type="password" class="form-control" name="text" placeholder="Password...">
+            </div>
+            <div class="footer text-center">
+              <a href="http://vijender.in/" class="btn btn-neutral btn-round btn-lg">Get Started</a>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

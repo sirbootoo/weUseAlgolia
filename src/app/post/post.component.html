@@ -1,0 +1,36 @@
+<div class="container-fluid stylish-form">
+  <div class="row mar20">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <!-- SignUp -->
+      <div class="inner-section">
+        <form method="POST" [formGroup]="shareForm">
+          <div class="mar20 inside-form">
+            <h2 class="font_white text-center">Share</h2>
+            <h6 class="font_white text-center">Help increase the community by providing us with websites, projects or tutorials that use Algolia</h6>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fas fa-at "></i>
+              </span>
+              <input type="email" class="form-control" name="text" placeholder="Email..." formControlName="email">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fas fa-globe "></i>
+              </span>
+              <input type="text" class="form-control" name="text" placeholder="Website Url" formControlName="url">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fas fa-pencil-alt "></i>
+              </span>
+              <textarea type="text" class="form-control" rows="8" name="text" placeholder="Description about product" formControlName="description"></textarea>
+            </div>
+            <div class="footer text-center">
+              <button class="btn btn-neutral btn-round btn-lg" (click)="share()" [disabled]="loading">Post</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
