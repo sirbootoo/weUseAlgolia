@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { environment } from '../../environments/environment';
-
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Observable} from 'rxjs';
-import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
-// import 'rxjs/add/operator/map';
 import { PostService } from '../services/post.service';
 
 @Component({
@@ -17,13 +11,9 @@ export class PostComponent implements OnInit {
 
   shareForm: FormGroup;
   loading:boolean = false;
-  cloudinaryOptions = environment.cloudinary;
-
-  uploader: CloudinaryUploader = new CloudinaryUploader(
-    new CloudinaryOptions(this.cloudinaryOptions)
-  );
 
   constructor(private postService: PostService) {
+
     this.shareForm = new FormGroup({
       email: new FormControl('', Validators.required),
       url: new FormControl('', Validators.required),
@@ -38,19 +28,31 @@ export class PostComponent implements OnInit {
   share(){
     this.loading = true;
     console.log(this.shareForm.controls['url'].value);
-    const url = this.shareForm.controls['url'].value
-    var data = {
-      url: url
+    let url = this.shareForm.controls['url'].value;
+    if(!url.startsWith('http://') || !url.startsWith('https://')){
+      url = 'http://'+url;
     }
+    let data: any = {};
     this.postService.getUrlInfo(url).subscribe((res:any) => {
       var imgData = res.screenshot.data.replace(/_/g, '/').replace(/-/g, '+');
-      console.log(imgData)
       let imageData:any = 'data:image/jpeg;base64,' + imgData;
-      this.postService.imageUpload(imageData).subscribe(imgRes => {
-        console.log(imgRes);
+      this.postService.imageUpload(imageData).subscribe((imgRes:any) => {
+        data.imageUrl = imgRes.secure_url;
+        data.email = this.shareForm.controls['email'].value;
+        data.description = this.shareForm.controls['description'].value
+        this.postService.post(data).then(payload => {
+          data.id = payload.id;
+          this.postService.indexData(data).then(indexPayload => {
+            console.log(indexPayload);
+            this.loading = false;
+          });
+        });
       })
     })
   }
+
+
+  
 
 
 
