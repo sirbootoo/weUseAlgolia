@@ -9,7 +9,7 @@ export const environment = {
     appId: 'N0TA2VKCHM',
     apiKey: '783df2fee854753ff2bf5f51cc155cdf',
     indexName: 'weusealgolia',
-    urlSync: false
+    routing: true
   },
   firebase: {
     apiKey: "AIzaSyBFGNi9wkx_8BLOr5v9TmCJIKHBUX1lauM",

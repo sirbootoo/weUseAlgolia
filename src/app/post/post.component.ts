@@ -15,9 +15,10 @@ export class PostComponent implements OnInit {
   constructor(private postService: PostService) {
 
     this.shareForm = new FormGroup({
+      name: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       url: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required)
+      madeBy: new FormControl('', Validators.required)
     });
   }
 
@@ -27,10 +28,17 @@ export class PostComponent implements OnInit {
 
   share(){
     this.loading = true;
-    console.log(this.shareForm.controls['url'].value);
     let url = this.shareForm.controls['url'].value;
-    if(!url.startsWith('http://') || !url.startsWith('https://')){
-      url = 'http://'+url;
+    console.log('Checking url for https:// and http:// ', url.startsWith('https://'), url.startsWith('http://'));
+    if(url.startsWith('http://') === false){
+      if(url.startsWith('https://') === false){
+        url = 'http://'+url;
+      }
+    }
+    if(url.endsWith('#/')){
+      url.slice(0, -2);
+    }else if(url.endsWith('#')) {
+      url.slice(0, -1);
     }
     let data: any = {};
     this.postService.getUrlInfo(url).subscribe((res:any) => {
@@ -39,19 +47,28 @@ export class PostComponent implements OnInit {
       this.postService.imageUpload(imageData).subscribe((imgRes:any) => {
         data.imageUrl = imgRes.secure_url;
         data.email = this.shareForm.controls['email'].value;
-        data.description = this.shareForm.controls['description'].value
+        data.madeBy = this.shareForm.controls['madeBy'].value
         this.postService.post(data).then(payload => {
           data.id = payload.id;
+          data.url = url;
+          data.name = this.shareForm.controls['name'].value;
           this.postService.indexData(data).then(indexPayload => {
             console.log(indexPayload);
             this.loading = false;
+            this.shareForm.reset();
           });
         });
+      }, err => {
+        this.loading = false;
       })
+    }, errs => {
+      this.loading = false;
     })
   }
 
-
+  goTo(url) {
+    window.location.href = url;
+  }
   
 
 

@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Ng2CloudinaryModule } from 'ng2-cloudinary';
 import { FileUploadModule } from 'ng2-file-upload';
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 
 
 import { AppRoutingModule } from './app.routes';
@@ -31,7 +32,7 @@ import { PostComponent } from './post/post.component';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    FormsModule, 
+    FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     Ng2CloudinaryModule,
@@ -39,6 +40,12 @@ import { PostComponent } from './post/post.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
     NgAisModule.forRoot(),
+    SweetAlert2Module.forRoot({
+      buttonsStyling: false,
+      customClass: 'modal-content',
+      confirmButtonClass: 'btn btn-primary',
+      cancelButtonClass: 'btn'
+    }),
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ChildrenOutletContexts],

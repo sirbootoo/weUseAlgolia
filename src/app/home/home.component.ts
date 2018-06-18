@@ -27,4 +27,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(){}
 
+  goTo(url) {
+    window.location.href = url;
+  }
+
 }
