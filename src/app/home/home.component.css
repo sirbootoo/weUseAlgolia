@@ -77,6 +77,60 @@ section.jumbotron{
     }
 }
 
+::ng-deep .ais-RefinementList-list li {
+    float: left;
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    background: #5468FF;
+    border-radius: 30px;
+    margin-left: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+::ng-deep .ais-RefinementList-count {
+    display: none !important;
+}
+
+::ng-deep .ais-RefinementList-labelText {
+    margin-right: 5px;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+
+::ng-deep .ais-RefinementList-label {
+    margin: 0px !important;
+}
+
+::ng-deep .ais-RefinementList-checkbox:checked + .ais-RefinementList-labelText::before {
+    content: '  ';
+    margin-right: 10px;
+    height: 100% !important;
+    border: 1px solid #fff !important;
+    color: #fff !important;
+    background: #fff !important;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    margin-bottom: 0px !important
+    /* padding: 10px !important; */
+}
+
+::ng-deep .ais-RefinementList-checkbox{
+    margin: 0;
+    position: absolute;
+    z-index: 2;            
+    cursor: pointer;
+    outline: none;
+    opacity: 0;
+    /* CSS hacks for older browsers */
+    /* _noFocusLine: expression(this.hideFocus=true);  */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    -khtml-opacity: 0;
+    -moz-opacity: 0;
+}
+
 ::ng-deep .ais-SearchBox-input {
     width: 620px;
     height: 50px;

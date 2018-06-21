@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { PostService } from '../services/post.service';
+import { SwalComponent } from '@toverux/ngx-sweetalert2';
 
 @Component({
   selector: 'app-post',
@@ -9,13 +10,18 @@ import { PostService } from '../services/post.service';
 })
 export class PostComponent implements OnInit {
 
+  @ViewChild('swalBox') private swalBox: SwalComponent;
+
   shareForm: FormGroup;
   loading:boolean = false;
+
+  swalCus: any = {};
 
   constructor(private postService: PostService) {
 
     this.shareForm = new FormGroup({
       name: new FormControl('', Validators.required),
+      type: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       url: new FormControl('', Validators.required),
       madeBy: new FormControl('', Validators.required)
@@ -52,8 +58,16 @@ export class PostComponent implements OnInit {
           data.id = payload.id;
           data.url = url;
           data.name = this.shareForm.controls['name'].value;
+          data.type = this.shareForm.controls['type'].value;
+          console.log(data);
           this.postService.indexData(data).then(indexPayload => {
             console.log(indexPayload);
+            this.swalCus = {
+              title: 'Share successful',
+              text: 'You have successfully shared the project',
+              type: 'success'
+            }
+            this.swalBox.show();
             this.loading = false;
             this.shareForm.reset();
           });

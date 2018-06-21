@@ -91,6 +91,19 @@ h2.font_white.text-center span:hover {
 input:focus {
     outline: none !important;
 }
+select {
+    width: 100%;
+    height: inherit !important;
+    margin: 0;
+    padding: 0 0 0 .5em;
+    color: #fff;
+    cursor: pointer;
+}
+option {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #5468FF !important;
+    padding: 1em !important;
+}
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: #fff !important;
 }

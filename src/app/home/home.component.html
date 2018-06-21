@@ -17,37 +17,39 @@
             Algolia
           </a>
         </p>
+        <div class="row mt-3 mb-4 justify-content-md-center">
+            <ais-refinement-list attribute="type"></ais-refinement-list>
+        </div>
       </div>
     </section>
 
     <div class="album py-5">
-
-        <ais-hits>
-          <ng-template let-hits="hits">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-4" *ngFor="let hit of hits">
-                  <div class="card mb-4 box-shadow">
-                    <a href="{{hit.url}}" target="_blank">
-                        <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]"
-                        src="{{hit.imageUrl}}" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
-                    </a>
-                    <div class="card-body">
-                      <p class="card-text truncate">{{hit.name}}</p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                          <a href="{{hit.url}}" target="_blank" class="btn btn-sm btn-outline-secondary">View</a>
-                        </div>
-                        <small class="text-muted">{{hit.madeBy}}</small>
+      <ais-hits>
+        <ng-template let-hits="hits">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4" *ngFor="let hit of hits">
+                <div class="card mb-4 box-shadow">
+                  <a href="{{hit.url}}" target="_blank">
+                      <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]"
+                      src="{{hit.imageUrl}}" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
+                  </a>
+                  <div class="card-body">
+                    <p class="card-text truncate">{{hit.name}}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a href="{{hit.url}}" target="_blank" class="btn btn-sm btn-outline-secondary">View</a>
                       </div>
+                      <small class="text-muted">{{hit.madeBy}}</small>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-          </ng-template>
-        </ais-hits>
+        </ng-template>
+      </ais-hits>
 
     </div>
 
