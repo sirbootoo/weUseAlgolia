@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable} from 'rxjs';
 import * as algoliasearch from 'algoliasearch';
-import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -34,9 +33,9 @@ export class PostService {
     return this.posts.add(data);
   }
 
-  indexData(data){
-    let client = algoliasearch(environment.algolia.appId, environment.algolia.prodApiKey);
-    var index = client.initIndex(environment.algolia.indexName);
+  indexData(data, env){
+    let client = algoliasearch(env.AppId, env.prodApiKey);
+    var index = client.initIndex(env.indexName);
 
     return index.addObject(data);
   }

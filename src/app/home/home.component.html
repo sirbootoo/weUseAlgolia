@@ -18,20 +18,25 @@
           </a>
         </p>
         <div class="row mt-3 mb-4 justify-content-md-center">
-            <ais-refinement-list attribute="type"></ais-refinement-list>
+          <ais-refinement-list attribute="type"></ais-refinement-list>
         </div>
       </div>
     </section>
 
     <div class="album py-5">
       <ais-hits>
-        <ng-template let-hits="hits">
+        <ng-template let-hits="hits" let-results="results" let-refine="showMore">
           <div class="container">
+            <!-- No results message -->
+            <div *ngIf="hits.length === 0" style="text-align: center; font-size: 1.8em">
+                😞 No results found<span *ngIf="results.query" > matching </span>
+              <strong *ngIf="results.query">{{results.query}}</strong>.
+            </div>
             <div class="row">
               <div class="col-md-4" *ngFor="let hit of hits">
                 <div class="card mb-4 box-shadow">
                   <a href="{{hit.url}}" target="_blank">
-                      <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]"
+                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]"
                       src="{{hit.imageUrl}}" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
                   </a>
                   <div class="card-body">
@@ -46,8 +51,11 @@
                 </div>
               </div>
             </div>
+            <!-- Show more button template -->
+            <button *ngIf="hits.length >= total " (click)="refine($event)" class="btn btn-outline-primary btn-lg btn-block">
+              Show more
+            </button>
           </div>
-
         </ng-template>
       </ais-hits>
 

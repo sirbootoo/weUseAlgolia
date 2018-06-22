@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   config:any = environment.algolia;
 
+  total = 12;
+
   constructor() { }
 
   ngOnInit() {

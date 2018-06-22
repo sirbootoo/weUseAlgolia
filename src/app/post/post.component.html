@@ -3,6 +3,12 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <!-- SignUp -->
       <div class="inner-section">
+        <div class="alert {{swalCus.type === 'success' ? 'wua-success-bg' : 'wua-danger-bg'}} ert-dismissible fade show" *ngIf="wuaAlert" role="alert">
+          <strong>{{swalCus.title}}</strong> {{swalCus.text}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="wuaAlert = false">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
         <form method="POST" [formGroup]="shareForm">
           <div class="mar20 inside-form">
             <h2 class="font_white text-center">Share</h2>
@@ -34,6 +40,7 @@
                 <option [value]="'projects'">Projects</option>
                 <option [value]="'websites'">Websites</option>
                 <option [value]="'tutorials'">Tutorials</option>
+                <option [value]="'videos'">Videos</option>
               </select>
             </div>
             <div class="input-group">
@@ -51,10 +58,3 @@
     </div>
   </div>
 </div>
-
-<swal
-  #swalBox
-  title="{{swalCus.title}}"
-  text="{{swalCus.text}}"
-  type="{{swalCus.type}}">
-</swal>
