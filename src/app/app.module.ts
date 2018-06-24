@@ -2,8 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { Ng2CloudinaryModule } from 'ng2-cloudinary';
-import { FileUploadModule } from 'ng2-file-upload';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 
 
@@ -35,8 +33,6 @@ import { PostComponent } from './post/post.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    Ng2CloudinaryModule,
-    FileUploadModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
     NgAisModule.forRoot(),
