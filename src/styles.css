@@ -45,7 +45,7 @@
 
 
   .truncate {
-    width: 300px !important;
+    width: 80% !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
